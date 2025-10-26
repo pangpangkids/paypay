@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>《双生火焰》 캐릭터 관계도 – 우측 정보 패널</title>
+  <style>
+    /* 전체 레이아웃: 우측 패널은 항상 오른쪽에 고정됨 */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      height: 100%;
+    }
+    .diagram-wrapper {
+      position: relative;
+      flex: 1 1 auto;
+      background-color: #fff;
+      border-right: 1px solid #ddd;
+      overflow: auto;
+    }
+    .details-wrapper {
+      flex: 0 0 35%;
+      max-width: 400px;
+      min-width: 300px;
+      padding: 20px;
+      overflow-y: auto;
+      background-color: #f7f9fa;
+      border-left: 1px solid #ddd;
+      font-size: 0.95em;
+      line-height: 1.45;
+    }
+    .details-wrapper h2 {
+      margin-top: 0;
+    }
+    /* 범례 스타일 */
+    .legend {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.8em;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      z-index: 50;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+    .legend-line {
+      width: 40px;
+      height: 0;
+      border-top: 3px solid #000;
+    }
+    .legend-box {
+      width: 15px;
+      height: 15px;
+      border: 1px solid #999;
+    }
+    /* 노드 스타일 */
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+    .node rect {
+      stroke: #4682b4;
+      stroke-width: 1.5;
+      rx: 6;
+      ry: 6;
+    }
+    .node text {
+      pointer-events: none;
+      fill: #2c3e50;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .node:hover rect {
+      fill-opacity: 0.85;
+      cursor: pointer;
+    }
+    /* 에지 스타일 */
+    .edge {
+      fill: none;
+      stroke-linecap: round;
+    }
+    .family {
+      stroke: #e74c3c;
+      stroke-width: 2.5;
+    }
+    .love {
+      stroke: #e91e63;
+      stroke-width: 2.5;
+    }
+    .friend {
+      stroke: #27ae60;
+      stroke-width: 2.0;
+    }
+    .enemy {
+      stroke: #7f8c8d;
+      stroke-width: 2.0;
+      stroke-dasharray: 5 4;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="diagram-wrapper">
+    <svg id="diagram" viewBox="0 0 1000 600">
+      <!-- 관계선 -->
+      <line class="edge family" x1="500" y1="250" x2="250" y2="200" />
+      <path class="edge family" d="M500 50 Q 200 300 400 520" />
+      <line class="edge love" x1="500" y1="250" x2="500" y2="50" />
+      <line class="edge love" x1="250" y1="200" x2="200" y2="80" />
+      <line class="edge love" x1="800" y1="80" x2="700" y2="420" />
+      <line class="edge friend" x1="500" y1="250" x2="800" y2="80" />
+      <line class="edge friend" x1="500" y1="250" x2="100" y2="360" />
+      <line class="edge friend" x1="500" y1="250" x2="300" y2="420" />
+      <line class="edge friend" x1="500" y1="250" x2="400" y2="520" />
+      <line class="edge friend" x1="500" y1="250" x2="500" y2="420" />
+      <line class="edge friend" x1="500" y1="250" x2="700" y2="420" />
+      <line class="edge friend" x1="300" y1="420" x2="500" y2="420" />
+      <line class="edge friend" x1="250" y1="200" x2="100" y2="360" />
+      <line class="edge enemy" x1="500" y1="250" x2="800" y2="250" />
+      <line class="edge enemy" x1="500" y1="250" x2="900" y2="360" />
+      <path class="edge enemy" d="M250 200 Q 525 50 800 250" />
+      <line class="edge enemy" x1="500" y1="50" x2="800" y2="250" />
+      <!-- 노드 -->
+      <g class="node" data-id="feifei">
+        <rect x="460" y="230" width="80" height="40" fill="#ffe066"></rect>
+        <text x="500" y="255" text-anchor="middle">상관 페이페이</text>
+      </g>
+      <g class="node" data-id="qi-ruoyao">
+        <rect x="210" y="180" width="80" height="40" fill="#fff3a6"></rect>
+        <text x="250" y="205" text-anchor="middle">치 루오야오</text>
+      </g>
+      <g class="node" data-id="duan-yunhe">
+        <rect x="460" y="30" width="80" height="40" fill="#e1bee7"></rect>
+        <text x="500" y="55" text-anchor="middle">단 윈허</text>
+      </g>
+      <g class="node" data-id="wang-chengming">
+        <rect x="760" y="60" width="80" height="40" fill="#e1bee7"></rect>
+        <text x="800" y="85" text-anchor="middle">왕 청밍</text>
+      </g>
+      <g class="node" data-id="bai-junyi">
+        <rect x="160" y="60" width="80" height="40" fill="#e1bee7"></rect>
+        <text x="200" y="85" text-anchor="middle">바이 준이</text>
+      </g>
+      <g class="node" data-id="qi-shengtian">
+        <rect x="760" y="230" width="80" height="40" fill="#f5b7b1"></rect>
+        <text x="800" y="255" text-anchor="middle">치 성톈</text>
+      </g>
+      <g class="node" data-id="zhang-muyang">
+        <rect x="860" y="340" width="80" height="40" fill="#f5b7b1"></rect>
+        <text x="900" y="365" text-anchor="middle">장 무양</text>
+      </g>
+      <g class="node" data-id="cai-yun">
+        <rect x="60" y="340" width="80" height="40" fill="#d5f5e3"></rect>
+        <text x="100" y="365" text-anchor="middle">차이 윤</text>
+      </g>
+      <g class="node" data-id="chen-jinlin">
+        <rect x="260" y="400" width="80" height="40" fill="#d5f5e3"></rect>
+        <text x="300" y="425" text-anchor="middle">천 진린</text>
+      </g>
+      <g class="node" data-id="yang-yimo">
+        <rect x="360" y="500" width="80" height="40" fill="#d5f5e3"></rect>
+        <text x="400" y="525" text-anchor="middle">양 이모</text>
+      </g>
+      <g class="node" data-id="ma-zhiyong">
+        <rect x="460" y="400" width="80" height="40" fill="#d5f5e3"></rect>
+        <text x="500" y="425" text-anchor="middle">마 즈융</text>
+      </g>
+      <g class="node" data-id="zou-die">
+        <rect x="660" y="400" width="80" height="40" fill="#d5f5e3"></rect>
+        <text x="700" y="425" text-anchor="middle">조우 디에</text>
+      </g>
+    </svg>
+    <!-- 범례 -->
+    <div class="legend">
+      <div class="legend-item"><span class="legend-line" style="border-color:#e74c3c;"></span><span>가족</span></div>
+      <div class="legend-item"><span class="legend-line" style="border-color:#e91e63;"></span><span>사랑/연인</span></div>
+      <div class="legend-item"><span class="legend-line" style="border-color:#27ae60;"></span><span>우정/동맹</span></div>
+      <div class="legend-item"><span class="legend-line" style="border-color:#7f8c8d; border-style:dashed;"></span><span>적대/경쟁</span></div>
+      <div class="legend-item"><span class="legend-box" style="background-color:#ffe066;"></span><span>주인공</span></div>
+      <div class="legend-item"><span class="legend-box" style="background-color:#e1bee7;"></span><span>연인/감정선</span></div>
+      <div class="legend-item"><span class="legend-box" style="background-color:#f5b7b1;"></span><span>악역</span></div>
+      <div class="legend-item"><span class="legend-box" style="background-color:#d5f5e3;"></span><span>우군/친구</span></div>
+    </div>
+  </div>
+  <!-- 우측 상세 정보 패널 -->
+  <div class="details-wrapper" id="details">
+    <h2>캐릭터 정보</h2>
+    <p>관계도에서 캐릭터를 클릭하면 해당 인물의 전사·목적·관계가 이 영역에 표시됩니다.</p>
+  </div>
+</div>
+<script>
+// 캐릭터 정보 (동일 내용)
+const characters = {
+  "feifei": `
+<h2>Shàngguān Fēifēi (상관 페이페이, 上官飛飛)</h2>
+<p>상관 페이페이는 화교마을 보물의 수호인 집안에서 태어난 쌍둥이 자매 중 한 명으로, 어린 시절부터 보물과 관련된 지식과 무예, 그리고 글·그림·음악 등을 익혔다. 열여섯 살 때 부모가 살해되고 오빠 상관 한이 실종되자, 진실을 찾고 보물을 지키기 위해 길을 떠나 당성으로 들어왔다. 상회 총회장 치 성톈이 술자리에서 그녀를 잃어버린 딸 치 루오야오로 착각하면서 치가 대저택에 입성했고, 눈이 먼 여식 역할을 연기하며 집안의 비밀을 살폈다. 마을의 친구 천 진린과 함께 계획을 꾸미지만 그가 죽자 의심을 키웠고, 어린 시절 연인 단 윈허와 재회하면서 그의 정체를 알아보고 협력했다. 처음에는 적대했던 왕 청밍과도 거래를 하며, 진짜 치 루오야오와 자매임을 깨닫고 함께 치 성톈의 악행을 폭로한다. 결국 모든 진실을 밝힌 뒤에는 고향으로 돌아가 보물을 수호하는 삶을 선택한다.</p>
+<p><strong>목적:</strong> 부모의 죽음과 오빠 실종의 진상을 밝히고, 보물을 지키며, 치 성톈의 음모를 파헤치는 것.</p>
+<p><strong>주요 관계:</strong> 쌍둥이 자매인 치 루오야오(가족), 어린 시절 연인 단 윈허(사랑), 적이자 양아버지 치 성톈(적대), 경쟁자에서 동맹으로 변하는 왕 청밍(동맹/감정), 친구 천 진린과 마 즈융(우정), 충직한 하인 차이 윤(동맹), 양 이모(동맹), 조우 디에(동맹) 등과 얽혀 있다.</p>
+  `,
+  "qi-ruoyao": `
+<h2>Qī Ruòyáo (치 루오야오, 戚若瑶)</h2>
+<p>치 루오야오는 사실 상관 페이페이와 함께 태어난 쌍둥이로, 태어나자마자 상관 가문과 치가 사이에서 뒤바뀌어 치 성톈의 딸로 자랐다. 당성에서 공주처럼 살았지만 승마 사고로 시력을 잃고, 어머니 리 윤시가 병으로 사망하면서 깊은 상처를 입는다. 하인 차이 윤과 함께 연성으로 떠나 새로운 삶을 시작했고, 그곳에서 군인 바이 준이를 만나 도움을 받는다. 어머니의 죽음과 자신의 출생에 관한 비밀을 밝히기 위해 몰래 당성으로 돌아와 상관 페이페이와 만나 협력한다. 쌍둥이임을 깨닫고 치 성톈의 음모를 폭로한 뒤에는 바이 준이와 함께 평화로운 삶을 선택한다.</p>
+<p><strong>목적:</strong> 어머니의 죽음과 자신의 출생 비밀을 밝히고 자유로운 삶을 얻는 것.</p>
+<p><strong>주요 관계:</strong> 쌍둥이 언니 상관 페이페이(가족), 양아버지 치 성톈(적대), 연인 바이 준이(사랑), 충직한 하인 차이 윤(우정).</p>
+  `,
+  "duan-yunhe": `
+<h2>Duàn Yúnhe (단 윈허, 段云赫)</h2>
+<p>단 윈허는 당성 상회 전 회장의 아들로 태어났으나, 치 성톈과 왕 샤오의 음모로 가족이 몰살되는 장면을 목격했다. 집사 양 이모와 함께 도피하며 복수심을 키웠고, 후에 치 성톈의 양자로 받아들여져 '치 운허'라는 이름으로 길러진다. 치 성톈의 명령에 충성하는 척하지만, 마음속으로는 복수를 노린다. 치가 대저택에서 상관 페이페이를 다시 만나 그녀의 정체를 의심하다 결국 그녀가 어린 시절 사랑하던 사람임을 깨닫고 협력한다. 양 이모로부터 과거의 진실을 듣고 치 성톈을 배신해 상관 페이페이, 왕 청밍과 힘을 합쳐 상회의 음모를 무너뜨린다.</p>
+<p><strong>목적:</strong> 가족의 복수를 이루고 상관 페이페이를 보호하며 자신의 본래 신분을 회복하는 것.</p>
+<p><strong>주요 관계:</strong> 어린 시절 연인 상관 페이페이(사랑), 양아버지이자 원수 치 성톈(적대), 경쟁자이자 동맹 왕 청밍(동맹), 후견인 양 이모(가족/보호자).</p>
+  `,
+  "qi-shengtian": `
+<h2>Qī Shèngtiān (치 성톈, 戚胜天)</h2>
+<p>치 성톈은 신분을 높이고 권력을 얻기 위해 명문가 딸 리 윤시와 결혼하여 상회의 일원이 된 후, 다른 회장들과 음모를 꾸며 상회의 수장이 되었다. 그는 왕 샤오를 비롯한 경쟁자를 살해하고, 상관 가문을 속여 당성으로 불러내어 보물의 비밀을 빼내려다 실패하자 상관 부부를 죽였다. 상관 한을 납치해 고문하고, 실종된 딸 치 루오야오를 미끼 삼아 상관 페이페이를 딸로 삼아 이용했으며, 단 윈허를 양자로 삼아 경쟁자 왕 청밍과 맞서게 했다. 끝내 상관 페이페이와 동맹들에 의해 그의 죄가 폭로되며 몰락한다.</p>
+<p><strong>목적:</strong> 당성 경제를 장악하고 화교마을 보물을 손에 넣어 절대적인 권력을 누리는 것.</p>
+<p><strong>주요 관계:</strong> 아내 리 윤시, 양딸 치 루오야오(가족), 딸로 오인한 상관 페이페이(적대), 양자로 삼은 단 윈허(적대), 라이벌 왕 청밍(적대), 공범 장 무양(협력).</p>
+  `,
+  "wang-chengming": `
+<h2>Wáng Chéngmíng (왕 청밍, 王丞铭)</h2>
+<p>왕 청밍은 선운 상회 회장의 아들로, 아버지가 치 성톈의 배신으로 죽자 표면적으로는 방탕한 한량처럼 행동하며 적의 방심을 유도했다. 동시에 기생 조우 디에를 이용해 상관 페이페이를 찾고, 화교마을 보물의 행방을 탐색했다. 치 성톈이 혼인을 제안하자 이를 계기로 상관 페이페이에 접근했다가 그녀의 용기와 지혜에 매료돼, 처음에는 보물을 얻으려던 마음을 버리고 그녀와 협력한다. 단 윈허와는 라이벌이지만 후에는 서로를 인정하며 함께 치 성톈을 무너뜨렸다.</p>
+<p><strong>목적:</strong> 선운 상회를 지키고, 치 성톈의 영향력에서 벗어나는 것.</p>
+<p><strong>주요 관계:</strong> 연인으로 이용했던 조우 디에(사랑), 협력과 사랑이 얽힌 상관 페이페이(동맹/감정), 라이벌 단 윈허(경쟁), 적인 치 성톈(적대).</p>
+  `,
+  "zou-die": `
+<h2>Zōu Dié (조우 디에, 邹蝶)</h2>
+<p>조우 디에는 화교마을의 가난한 집에서 태어나 악조건을 벗어나기 위해 권력 있는 남성들에게 접근했다. 촌장 아들 장 무양의 애인이 되어 당성으로 올라갔고, 장미원에서 뛰어난 가수로 성공해 왕 청밍에게 발탁되었다. 보물에 대한 정보를 따내기 위해 이용되다 상관 페이페이에게 모욕을 당하고 왕 청밍에게 버려지자, 그녀는 상관 페이페이와 치 루오야오와 협력하여 자신을 이용한 자들에게 복수했다. 처음엔 이익이 목적이었지만, 후엔 자신의 가치를 깨닫는다.</p>
+<p><strong>목적:</strong> 빈곤을 탈출해 권력과 부를 얻고, 자신을 이용한 남자들에게 복수하는 것.</p>
+<p><strong>주요 관계:</strong> 애인 장 무양(사랑), 이용한 왕 청밍(사랑/거래), 라이벌에서 동맹으로 변한 상관 페이페이와 치 루오야오(동맹).</p>
+  `,
+  "zhang-muyang": `
+<h2>Zhāng Mùyáng (장 무양, 张慕洋)</h2>
+<p>장 무양은 화교마을 촌장의 아들로, 아버지 권력을 등에 업고 마을 사람들을 괴롭히며 자랐다. 상관 가문을 질투하고 그들의 몰락을 기뻐했다. 기녀 조우 디에와 관계를 맺어 왕 청밍과 연결되며 보물의 위치를 거래하려 했으나, 머리가 나쁘고 겁이 많아 상관 페이페이의 계략에 속아 여러 번 망신을 당했다. 결국 그의 아버지의 음모가 드러나면서 몰락한다.</p>
+<p><strong>목적:</strong> 부와 권력을 유지하고 더 큰 이익을 얻으려는 것.</p>
+<p><strong>주요 관계:</strong> 아버지 장 즈슝(협력), 애인 조우 디에(사랑), 적대하는 상관 페이페이(적대), 그를 이용하는 왕 청밍(적대).</p>
+  `,
+  "chen-jinlin": `
+<h2>Chén Jǐnlín (천 진린, 陈瑾霖)</h2>
+<p>천 진린은 화교마을 출신 연극가 집안의 천재로, 어린 시절부터 상관 페이페이와 함께 자라며 긴밀한 우정을 나눴다. 뛰어난 연기와 가창력으로 극단을 이끌며 성장했으며, 상관 페이페이가 진실을 찾는 데 도움을 주고자 치 성톈의 생일 연회에 극단을 데려가 공연했다가 무대에서 의문사한다. 그의 죽음은 상관 페이페이가 치 성톈을 의심하는 단초가 되었다.</p>
+<p><strong>목적:</strong> 예술을 이어가며 상관 페이페이를 돕는 것.</p>
+<p><strong>주요 관계:</strong> 친구 상관 페이페이(우정), 동료 마 즈융(우정), 간접적으로 그의 죽음과 관련된 치 성톈(적대).</p>
+  `,
+  "cai-yun": `
+<h2>Cǎi Yún (차이 윤, 彩云)</h2>
+<p>차이 윤은 어려서 부모를 잃고 치 성톈의 도움으로 치가에 들어온 하인이다. 밝고 순수한 성격으로 치 루오야오를 돌보며 서로 의지해왔다. 상관 페이페이가 치 루오야오로 위장해 들어왔을 때 처음엔 경계했지만, 그녀의 정의로움에 감동해 협력한다. 차이 윤은 치 루오야오와 상관 페이페이 사이를 잇는 연락책이자 첩자로 활동하면서 결국 목숨을 잃어, 치 성톈이 마지막으로 남은 인간성을 잃게 된다.</p>
+<p><strong>목적:</strong> 은혜를 갚고 상관 페이페이와 치 루오야오의 진실 탐구를 돕는 것.</p>
+<p><strong>주요 관계:</strong> 주인 치 루오야오(우정), 신뢰하게 된 상관 페이페이(우정), 주인의 적 치 성톈(적대), 연성에서 만난 바이 준이(우정).</p>
+  `,
+  "bai-junyi": `
+<h2>Bái Jùnyī (바이 준이, 白俊一)</h2>
+<p>바이 준이는 군벌 가문에서 태어나 전통과 서양식 교육을 모두 받아 강인한 군인으로 성장했다. 연성에서 불량배에게 괴롭힘당하던 치 루오야오를 구해주면서 그녀와 인연을 맺고, 비밀리에 서로의 감정을 키운다. 치 루오야오가 당성으로 돌아가 상관 페이페이와 협력할 때 군사적으로 도움을 주고, 끝내 치 루오야오와 함께 평화로운 삶을 선택한다.</p>
+<p><strong>목적:</strong> 정의를 지키며 치 루오야오를 보호하고 사랑을 이루는 것.</p>
+<p><strong>주요 관계:</strong> 연인 치 루오야오(사랑), 동맹 상관 페이페이(우정), 맞서 싸우는 치 성톈(적대), 연락책 차이 윤(우정).</p>
+  `,
+  "yang-yimo": `
+<h2>Yáng Yǐmò (양 이모, 杨以默)</h2>
+<p>양 이모는 단가의 집사로, 단가 몰살 사건에서 어린 단 윈허를 구해 숨어 살며 그의 성장을 도왔다. 치 성톈에게 납치되어 감금당하면서도 기지를 발휘해 살아남았고, 상관 페이페이와 단 윈허에 의해 구출된 뒤 과거의 비밀을 밝힌다. 이후 잠시 다시 감금되길 자청해 치 성톈을 속이고, 결국 자유를 얻는다.</p>
+<p><strong>목적:</strong> 단가를 지키고 진실을 밝히며 단 윈허를 도와 복수를 이루는 것.</p>
+<p><strong>주요 관계:</strong> 보호자인 단 윈허(가족/보호자), 구출한 상관 페이페이(우정), 적 치 성톈(적대), 후반부 동맹 왕 청밍(동맹).</p>
+  `,
+  "ma-zhiyong": `
+<h2>Mǎ Zhìyǒng (마 즈융, 马志勇)</h2>
+<p>마 즈융은 천 진린과 함께 자라며 연극단에서 활동한 활발한 청년이다. 천 진린이 치 성톈의 음모로 죽자 큰 슬픔에 빠졌지만, 상관 페이페이를 도와 화교마을에서 악당들과 맞서며 ‘무두귀’ 공연으로 그들을 겁줬다. 친구의 죽음을 갚고 마을의 평화를 되찾는 데 기여한다.</p>
+<p><strong>목적:</strong> 친구를 기리고 마을을 지키는 것.</p>
+<p><strong>주요 관계:</strong> 친구 천 진린(우정), 동맹 상관 페이페이(우정), 적 장 무양과 장 즈슝(적대).</p>
+  `
+};
+
+// 캐릭터를 클릭하면 상세 정보 패널에 출력
+document.querySelectorAll('.node').forEach(function(node) {
+  node.addEventListener('click', function() {
+    const id = this.getAttribute('data-id');
+    const content = characters[id] || '<p>정보를 찾을 수 없습니다.</p>';
+    document.getElementById('details').innerHTML = content;
+  });
+});
+</script>
+</body>
+</html>
